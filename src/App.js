@@ -10,21 +10,22 @@ function reducer(state, action) {
     case "reset":
       return { ...state, count: 0 };
     default:
-      return {};
+      return { ...state };
   }
 }
 
 const initialState = {
   count: 0,
 };
+
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <div className="App">
-      <h1>count :{state.count}</h1>
+      <h1>count: {state.count}</h1>
       <button onClick={() => dispatch({ type: "increment" })}>Increment</button>
+      <button onClick={() => dispatch({ type: "decrement" })}>Decrement</button>
       <button onClick={() => dispatch({ type: "reset" })}>Reset</button>
-      <button onClick={() => dispatch({ type: "decrement" })}>decrement</button>
     </div>
   );
 }
